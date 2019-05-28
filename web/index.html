@@ -23,13 +23,13 @@
 
     <div class="row">
         <div class="col-12">
-            <table class="table table-striped">
+            <table class="table table-striped" id="rest-table">
                 <thead>
                 <tr>
                     <th>Product</th>
                     <th>Shop</th>
-                    <th>New price</th>
                     <th>Old price</th>
+                    <th>New price</th>
                     <th>Discount</th>
                 </tr>
                 </thead>
@@ -42,29 +42,28 @@
         <div class="col-8 offset-2">
             <h3 class="text-center my-5">Add Coupon</h3>
 
-            <form id="coupon-form">
+            <form id="add-coupon-form">
                 <div class="form-group">
-                    <label for="product-name">Product Name</label>
-                    <input type="text" class="form-control" id="product-name" name="product-name"
+                    <label for="product">Product Name</label>
+                    <input type="text" class="form-control" id="product" name="product"
                            placeholder="Product Name" required>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-8">
-                        <label for="shop">Shop Name</label>
-                        <select id="shop" class="form-control" name="shop" required>
-                            <option selected>Choose...</option>
-                            <option>...</option>
-                        </select>
+                        <label for="shop-list">Shop Name</label>
+                        <select id="shop-list" class="form-control" name="shopName" required></select>
                     </div>
 
                     <div class="form-group col-md-2">
-                        <label for="new-price">New Price</label>
-                        <input type="number" class="form-control" id="new-price" name="new-price" required>
+                        <label for="originalPrice">Old Price</label>
+                        <input type="number" class="form-control" id="originalPrice" name="originalPrice" step="0.01"
+                               required>
                     </div>
 
                     <div class="form-group col-md-2">
-                        <label for="old-price">Old Price</label>
-                        <input type="number" class="form-control" id="old-price" name="old-price" required>
+                        <label for="discountedPrice">New Price</label>
+                        <input type="number" class="form-control" id="discountedPrice" name="discountedPrice" step="0.01"
+                               required>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Add</button>
