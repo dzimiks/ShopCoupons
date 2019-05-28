@@ -1,2 +1,3 @@
-# ShopCoupons
-[Homework 7] College project for Web programming course.
+# Shop Coupons
+
+College project for Web programming course.
