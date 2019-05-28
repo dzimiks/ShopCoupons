@@ -15,20 +15,13 @@ public class CouponController {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<CouponModel> getUsers() {
+	public List<CouponModel> getCoupons() {
 		return couponService.getCoupons();
-	}
-
-	@GET
-	@Path("/shops")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Shop> getShops() {
-		return couponService.getShops();
 	}
 
 	@DELETE
 	@Path("/{id}")
-	public boolean getUserById(@PathParam("id") String id) {
+	public boolean deleteCoupon(@PathParam("id") String id) {
 		return couponService.deleteCoupon(id);
 	}
 
@@ -38,10 +31,4 @@ public class CouponController {
 	public CouponModel addCoupon(@FormParam("shopName") String shop, @FormParam("product") String product, @FormParam("discountedPrice") double discountedPrice, @FormParam("originalPrice") double originalPrice) {
 		return couponService.addCoupon(new CouponModel(shop, product, discountedPrice, originalPrice));
 	}
-
-	@PUT
-	public boolean addPlaceholderCoupon() {
-		return couponService.addPlaceholderCoupon();
-	}
-
 }

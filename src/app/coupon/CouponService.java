@@ -5,16 +5,14 @@ import java.util.List;
 
 public class CouponService {
 
-	public List<Shop> getShops() {
-		return CouponRepository.getShops();
-	}
-
 	public List<CouponModel> getCoupons() {
 		List<CouponModel> models = new ArrayList<>();
 		List<Coupon> coupons = CouponRepository.getCoupons();
+
 		for (Coupon c : coupons) {
 			models.add(new CouponModel(c));
 		}
+
 		return models;
 	}
 
@@ -22,12 +20,9 @@ public class CouponService {
 		return CouponRepository.removeCoupon(id);
 	}
 
-	public boolean addPlaceholderCoupon() {
-		return CouponRepository.addCoupon();
-	}
-
 	public CouponModel addCoupon(CouponModel cModel) {
 		Coupon coupon = CouponRepository.addCoupon(cModel);
+
 		if (coupon != null) {
 			return new CouponModel(coupon);
 		} else {

@@ -1,7 +1,7 @@
 let restTable = document.getElementById('rest-table').tBodies[0];
 
 $(document).ready(function () {
-    $.get('rest/coupons/shops', function (data) {
+    $.get('rest/shops', function (data) {
         for (let d of data) {
             $('#shop-list').append(new Option(d.name, d.id));
         }
@@ -19,7 +19,6 @@ $(document).ready(function () {
 
     function createCoupon() {
         $.post('rest/coupons', $('#add-coupon-form').serialize(), function (data) {
-            console.log(data);
             addEntry(data);
             $('#add-coupon-form')[0].reset();
         });

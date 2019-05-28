@@ -1,50 +1,22 @@
 package app.coupon;
 
+import app.shop.Shop;
+import app.shop.ShopRepository;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 public class CouponRepository {
 
-	private static String[] SHOP_NAME_LIST = {
-			"BOSCH",
-			"Win Win",
-			"Maxi",
-			"MC Donalds",
-			"Idea",
-			"KFC",
-			"Tepsija",
-			"RAF",
-			"Brankow"
-	};
-	private static List<Shop> SHOP_LIST;
 	private static List<Coupon> COUPON_LIST = new ArrayList<>();
+	private static List<Shop> SHOP_LIST = ShopRepository.getShops();
 
 	static {
-		SHOP_LIST = generateShops();
 		COUPON_LIST.add(new Coupon(SHOP_LIST.get(0), "BOSCH masina", 12439.43, 10322.11));
-		COUPON_LIST.add(new Coupon(SHOP_LIST.get(1), "Hama Mouse", 4224, 2999));
-		COUPON_LIST.add(new Coupon(SHOP_LIST.get(2), "Paprika", 85, 54));
-		COUPON_LIST.add(new Coupon(SHOP_LIST.get(3), "Double cheeseburger", 450, 399));
-	}
-
-	private static List<Shop> generateShops() {
-		List<Shop> shops = new ArrayList<>();
-
-		for (int i = 0; i < SHOP_NAME_LIST.length; i++) {
-			Shop shop = new Shop();
-			shop.setId(Integer.toString(i));
-			shop.setName(SHOP_NAME_LIST[i]);
-			shops.add(shop);
-		}
-
-		return shops;
-	}
-
-
-	public synchronized static List<Shop> getShops() {
-		return SHOP_LIST;
+		COUPON_LIST.add(new Coupon(SHOP_LIST.get(1), "Hama Mouse", 4224.43, 2999.99));
+		COUPON_LIST.add(new Coupon(SHOP_LIST.get(2), "Paprika", 85.99, 54.99));
+		COUPON_LIST.add(new Coupon(SHOP_LIST.get(3), "Double cheeseburger", 499.99, 399.99));
 	}
 
 	public synchronized static List<Coupon> getCoupons() {

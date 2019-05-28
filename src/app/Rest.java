@@ -8,6 +8,6 @@ import javax.ws.rs.ApplicationPath;
 public class Rest extends ResourceConfig {
 
 	public Rest() {
-		packages("app.coupon");
+		packages("app.coupon", "app.shop");
 	}
 }

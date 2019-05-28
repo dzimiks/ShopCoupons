@@ -1,4 +1,4 @@
-package app.coupon;
+package app.shop;
 
 public class Shop {
 
