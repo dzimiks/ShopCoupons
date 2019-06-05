@@ -33,7 +33,7 @@ $(document).ready(() => {
             btnDelete.addEventListener('click', e => {
                 $.ajax({
                     type: 'DELETE',
-                    url: 'rest/coupons/' + id,
+                    url: 'api/coupons/' + id,
                     success: item => {
                         if (item === 'true') {
                             restTable.removeChild(tr);
@@ -48,7 +48,7 @@ $(document).ready(() => {
         },
 
         addCoupon: () => {
-            $.post('rest/coupons', $('#add-coupon-form').serialize(), data => {
+            $.post('api/coupons', $('#add-coupon-form').serialize(), data => {
                 result.addRow(data);
                 $('#add-coupon-form')[0].reset();
             });
@@ -64,7 +64,7 @@ $(document).ready(() => {
         },
 
         fillForm: () => {
-            $.get('rest/coupons', data => {
+            $.get('api/coupons', data => {
                 for (let d of data) {
                     result.addRow(d);
                 }
@@ -72,7 +72,7 @@ $(document).ready(() => {
         }
     };
 
-    $.get('rest/shops', data => {
+    $.get('api/shops', data => {
         for (let d of data) {
             $('#shop-list').append(new Option(d.name, d.id));
         }

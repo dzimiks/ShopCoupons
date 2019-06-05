@@ -4,10 +4,10 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 import javax.ws.rs.ApplicationPath;
 
-@ApplicationPath("/rest")
-public class Rest extends ResourceConfig {
+@ApplicationPath("/api")
+public class RestAPI extends ResourceConfig {
 
-	public Rest() {
+	public RestAPI() {
 		packages("app.coupon", "app.shop");
 	}
 }
