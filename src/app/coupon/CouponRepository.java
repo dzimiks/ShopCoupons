@@ -54,10 +54,4 @@ public class CouponRepository {
 
 		return false;
 	}
-
-
-	public synchronized static boolean addCoupon() {
-		COUPON_LIST.add(new Coupon(SHOP_LIST.get(2), "Mleko", 139.99, 119.99));
-		return true;
-	}
 }
