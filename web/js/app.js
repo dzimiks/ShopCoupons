@@ -1,33 +1,9 @@
-$(document).ready(function () {
+$(document).ready(() => {
     const restTable = document.getElementById('rest-table').tBodies[0];
     const form = document.getElementById('add-coupon-form');
 
     const result = {
-        addCoupon: () => {
-            $.post('rest/coupons', $('#add-coupon-form').serialize(), function (data) {
-                this.addRow(data);
-                $('#add-coupon-form')[0].reset();
-            });
-        },
-
-        processForm: e => {
-            if (e.preventDefault) {
-                e.preventDefault();
-            }
-
-            this.addCoupon();
-            return false;
-        },
-
-        fillForm: () => {
-            $.get('rest/coupons', function (data) {
-                for (let d of data) {
-                    this.addRow(d);
-                }
-            });
-        },
-
-        addRow: data => {
+        addRow: (data) => {
             let tr = document.createElement('tr');
             let id = data.id;
             let info = [data.product, data.shopName, data.originalPrice, data.discountedPrice, `${Math.round(data.sale)}%`];
@@ -38,9 +14,9 @@ $(document).ready(function () {
                 td.appendChild(document.createTextNode(i));
 
                 if (cnt === 2) {
-                    td.classList.add("red-text");
+                    td.classList.add('red-text');
                 } else if (cnt === 3) {
-                    td.classList.add("green-text");
+                    td.classList.add('green-text');
                 }
 
                 tr.appendChild(td);
@@ -58,7 +34,7 @@ $(document).ready(function () {
                 $.ajax({
                     type: 'DELETE',
                     url: 'rest/coupons/' + id,
-                    success: function (item) {
+                    success: item => {
                         if (item === 'true') {
                             restTable.removeChild(tr);
                         }
@@ -69,6 +45,30 @@ $(document).ready(function () {
             let tdbt = document.createElement('td');
             tdbt.appendChild(btnDelete);
             tr.appendChild(tdbt);
+        },
+
+        addCoupon: () => {
+            $.post('rest/coupons', $('#add-coupon-form').serialize(), data => {
+                result.addRow(data);
+                $('#add-coupon-form')[0].reset();
+            });
+        },
+
+        processForm: (e) => {
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+
+            result.addCoupon();
+            return false;
+        },
+
+        fillForm: () => {
+            $.get('rest/coupons', data => {
+                for (let d of data) {
+                    result.addRow(d);
+                }
+            });
         }
     };
 
@@ -81,8 +81,8 @@ $(document).ready(function () {
     result.fillForm();
 
     if (form.attachEvent) {
-        form.attachEvent('submit', result.processForm());
+        form.attachEvent('submit', result.processForm);
     } else {
-        form.addEventListener('submit', result.processForm());
+        form.addEventListener('submit', result.processForm);
     }
 });
