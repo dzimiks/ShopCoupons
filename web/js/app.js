@@ -6,7 +6,7 @@ $(document).ready(() => {
         addRow: (data) => {
             let tr = document.createElement('tr');
             let id = data.id;
-            let info = [data.product, data.shopName, data.originalPrice, data.discountedPrice, `${Math.round(data.sale)}%`];
+            let info = [data.product, data.shopName, data.originalPrice, data.discountedPrice, `${Math.round(data.sale * 100) / 100}%`];
             let cnt = 0;
 
             for (let i of info) {
@@ -54,7 +54,7 @@ $(document).ready(() => {
             });
         },
 
-        processForm: (e) => {
+        submitForm: (e) => {
             if (e.preventDefault) {
                 e.preventDefault();
             }
@@ -79,10 +79,5 @@ $(document).ready(() => {
     });
 
     result.fillForm();
-
-    if (form.attachEvent) {
-        form.attachEvent('submit', result.processForm);
-    } else {
-        form.addEventListener('submit', result.processForm);
-    }
+    form.addEventListener('submit', result.submitForm);
 });
